@@ -96,6 +96,8 @@ http://127.0.0.1:8000/api/vehiculos/
 
 - `ENTREGABLE_GUIA.md`: las 6 pruebas obligatorias con JSON listos para copiar.
 - `LABORATORIO_THUNDER_CLIENT.md`: ejemplos adicionales para practicar el CRUD.
+- `INCISO_B_EXPLICACION.md`: explicación de `useState`, `useEffect`, `fetch` y `map` con `key`.
+- `INCISO_B_CODIGO.md`: bloque de código React listo para copiar (13 líneas).
 
 ## Modelo `Vehiculo`
 
