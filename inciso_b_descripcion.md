@@ -1,0 +1,12 @@
+# Consumo de la API de Vehículos en React (Método GET)
+
+Para mostrar en una interfaz de React los vehículos registrados en nuestra base de datos, conectamos el frontend con el endpoint `http://127.0.0.1:8000/api/vehiculos/`. Como nuestra API en Django REST Framework está configurada sin autenticación y con CORS habilitado, podemos solicitar los datos directamente desde el navegador sin necesidad de enviar tokens de acceso.
+
+El funcionamiento se apoya en cuatro piezas clave de React y JavaScript:
+
+* **`useState` (Almacenamiento en memoria):** Lo utilizamos para crear el estado `vehiculos`, inicializado como un arreglo vacío (`[]`) mientras llegan los datos del servidor, junto con su función actualizadora `setVehiculos`. Cada vez que `setVehiculos` recibe la información nueva, React detecta el cambio y vuelve a renderizar el componente automáticamente para reflejar la lista actualizada en pantalla.
+* **`useEffect` (Momento de la petición):** Este *hook* nos permite lanzar la consulta a la API justo después de que el componente se monta por primera vez en la interfaz. Le pasamos un arreglo de dependencias vacío (`[]`) como segundo argumento para asegurarnos de que la petición se ejecute una sola vez; si lo omitiéramos, el componente entraría en un ciclo infinito haciendo peticiones cada vez que se vuelve a dibujar.
+* **`fetch` (Consulta HTTP):** Dentro del `useEffect`, llamamos a `fetch("http://127.0.0.1:8000/api/vehiculos/")`, que por defecto envía una solicitud de tipo `GET`. Como es una operación asíncrona que devuelve una promesa, encadenamos un primer `.then((res) => res.json())` para transformar la respuesta HTTP en objetos de JavaScript, y un segundo `.then((datos) => setVehiculos(datos))` para guardar ese arreglo en nuestro estado.
+* **`map` con `key` (Renderizado de la lista):** Finalmente, dentro del retorno (JSX) del componente, recorremos el arreglo `vehiculos` con el método `.map()` para convertir cada registro en un elemento `<li>` con su marca, modelo, año y color. A cada etiqueta le asignamos la propiedad `key={v.id}` usando el identificador único generado en MySQL (en lugar del índice del arreglo), lo que permite a React rastrear qué elementos se agregan, modifican o eliminan de forma eficiente y sin advertencias en la consola.
+
+De esta forma, cuando el usuario entra a la vista en el navegador, el componente arranca con la lista vacía, consulta el endpoint de Django en segundo plano, guarda el arreglo JSON recibido y dibuja cada vehículo dinámicamente en pantalla.

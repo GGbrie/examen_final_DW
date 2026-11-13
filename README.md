@@ -3,15 +3,6 @@
 Proyecto académico desarrollado con **Python, Django, Django REST Framework y MySQL/MariaDB**.
 Permite gestionar vehículos mediante operaciones CRUD en formato JSON, **sin autenticación**.
 
-## Tecnologías
-
-- Python 3.10
-- Django 4.2 LTS
-- Django REST Framework 3.15
-- MySQL / MariaDB (XAMPP)
-- django-cors-headers
-- mysqlclient
-
 ## Funcionalidades
 
 - Crear vehículos con `POST`.
@@ -25,7 +16,7 @@ Permite gestionar vehículos mediante operaciones CRUD en formato JSON, **sin au
 ## Requisitos previos
 
 1. Tener instalado Python 3.10 o superior.
-2. Tener MySQL o MariaDB iniciado en `127.0.0.1:3306`.
+2. Tener MySQL.
 3. Usuario `root` sin contraseña (configuración local del proyecto).
 
 ## Instalación
